@@ -21,3 +21,9 @@ src-v2/classes.jar
 src-v2/unsigned.apk
 src-v2/work.apk
 src-v2/aligned.apk
+src-release/classes/
+src-release/dex/
+src-release/classes.jar
+src-release/unsigned.apk
+src-release/work.apk
+src-release/aligned.apk

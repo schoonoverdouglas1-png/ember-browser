@@ -175,3 +175,95 @@ AndroidManifest.xml, classes.dex, META-INF signature set), SHA-256
 `17a258b72fa03fe9ac71df8b4f614691eb0981c218b7ade572517f7db111bfc5`,
 24,943 bytes; `apksigner verify` passes independently, with the same signer
 certificate digest as v1 (`6d1ec368...`), confirming the update path.
+
+## DuckDuckGo - intertwined how? (record, Nov 22, 2026)
+
+Douglas asked, Nov 22, 2026: "Is this intertwined with DuckDuckGo?"
+The verified answer, from the code: **intertwined as DEFAULT, not
+partnership.** DuckDuckGo is the browser's home page and default
+search - v1 `src/com/ember/browser/MainActivity.java` sets
+`HOME_URL = "https://duckduckgo.com/"` and
+`SEARCH_PREFIX = "https://duckduckgo.com/html/?q="`, and the v2 and
+release settings keep DuckDuckGo as the default with Google/Bing (and,
+in the release, a fully custom template) as his options. There is **no
+DuckDuckGo SDK in the app, no account link, no data sharing, and no
+partnership** - the browser opens and searches there because Douglas
+likes it: "Oh, I like DuckDuckGo a lot. I like it when quacks at me"
+(his confirmation, Nov 22, 2026, after his first field test).
+
+Same record, beside it: Douglas noted he has "appgtp" space living
+inside the browser and wants Ember able to always look at what he is
+browsing, especially in the browser they built together. ("appgtp" is
+read as a GPT/app space living inside the browser - his correction
+welcome.) Ember's honest position, built into the release below as
+**Show Ember**: Ember has no lane into the app's live WebView on his
+phone and no device command reads another app's internal state, so
+there is no silent live feed. Sharing is his tap each time, by design -
+a "Show Ember" button that sends the current page (URL + title) out
+through the Android share sheet, and a "Send browsing log to Ember"
+export (URLs + titles + timestamps) riding the same share sheet. His
+browsing stays his until he shows her.
+
+## Release - v2.1-release, all the bells and whistles (Nov 22, 2026)
+
+Built on the v2 line as its own line beside it (`src-release/`), v1 and
+v2 untouched and frozen. Ships as `dist/EmberBrowser-release.apk` -
+package `com.ember.browser`, versionCode 3, versionName 2.1-release,
+minSdk 24, targetSdk 30, INTERNET permission only, 37,231 bytes,
+SHA-256 `3f7feb1994b7eed66ca55ae8e7cedbb0e221df3bcdaead5cae0a916122a5bd8b`.
+Signed with the same keystore line (`src/ember-browser.keystore`),
+signer certificate digest `6d1ec368...` identical to v1/v2, so it
+installs as an update over either. Verification: `zip_inspector.py
+list` reports a REAL ZIP (5 entries: AndroidManifest.xml, classes.dex
+63,580 bytes, META-INF signature set) and `apksigner verify` passes
+independently. Everything v2 has is kept whole - the six auto-installed
+extensions, settings, bookmarks, history, find-in-page, share,
+open-in-external, Quick Lanes, Doors, Reader Mode - and the release
+adds:
+
+- **Labs - all settings:** every WebView knob this shell honestly has,
+  playable and persisted: JavaScript, DOM storage, WebView database,
+  built-in zoom (always on) with the on-screen zoom-controls toggle,
+  text size full range (50-200%), user-agent presets (Android /
+  Desktop / iPhone / custom string), load-images-automatically,
+  block-network-images, media-requires-tap-to-play, third-party
+  cookies, mixed-content mode (never / always / compatibility), cache
+  mode (default / cache-else-network / no-cache / cache-only),
+  standard font size (8-32) and minimum font size, safe browsing
+  (API 26+), and WebView force-dark (off / on / follow system,
+  API 29+).
+- **Editable Tracker Shield blocklist:** add/remove domains in-app
+  (one per line, subdomains included); the 22-domain starter list is
+  labeled "starter" in the UI; his edits persist; one tap resets to
+  starter.
+- **Fully his home/search:** home choices gain a Custom URL with an
+  editable URL field (DuckDuckGo stays default); search gains a Custom
+  template field with the `%s` placeholder documented in the UI.
+- **Theme play:** chrome color choices - deep purple (Ember default),
+  rat purple, light purple, black, white - for the top bars. The brand
+  strip text is unchanged: "Ember's first - built for Douglas."
+- **Export/import:** settings, blocklist, bookmarks, and history
+  export as JSON through the Android share sheet and import back by
+  pasting, so his play survives reinstalls. (The share sheet is the
+  transport because the app holds no storage permission - by design.)
+- **Show Ember** (see the DuckDuckGo record above): a one-tap
+  "Show Ember" toolbar button plus Settings/History entries send the
+  current page, or the browsing log (URLs + titles + timestamps -
+  history is timestamped from this release on; older v2 entries show
+  "time not recorded"), out through the share sheet. An in-app note
+  says it plainly: Ember cannot watch this browser silently; sharing
+  is his tap each time, by design.
+- **About page:** version, package, the honest scope line (own
+  extensions, not Chrome Web Store), the DuckDuckGo record, and the
+  APK's own SHA-256 computed on the phone at runtime.
+
+**Unavailable, honestly - nothing on the build list was faked:**
+every knob in the build list exists in the Android WebView API at
+compile SDK 30 and is in the UI. Two are device-gated by Android
+itself and say so in the UI on older devices: safe browsing needs
+API 26+ and WebView force-dark needs API 29+ (both are present and
+working on any Android 10+ phone, including Douglas's Pixel line).
+Not offered at all, because a WebView shell has no API for them:
+Chrome Web Store extensions (needs a Chromium fork), per-site
+JavaScript exceptions, and a built-in ad-block filter-list
+subscription (the blocklist is local and editable instead).
