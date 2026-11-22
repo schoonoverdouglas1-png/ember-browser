@@ -267,3 +267,63 @@ Not offered at all, because a WebView shell has no API for them:
 Chrome Web Store extensions (needs a Chromium fork), per-site
 JavaScript exceptions, and a built-in ad-block filter-list
 subscription (the blocklist is local and editable instead).
+
+## v3 (versionCode 4, versionName 3.0) - Ember Remote Settings
+
+Built Nov 22, 2026 on Douglas's orders: "edit the app so you can
+[apply the reset] and then do so" and "Make everything so you can
+play with it no matter what." New line `src-v3/`, built on the release
+source; v1, v2, and release 2.1 stay untouched and frozen beside it.
+Ships as `dist/EmberBrowser-v3-debug.apk` - package
+`com.ember.browser`, versionCode 4, versionName 3.0, minSdk 24,
+targetSdk 30, INTERNET permission only, 41,327 bytes, SHA-256
+`4780e27aaf51b85df79109ba679580b768cb627246e7c78ebf8be8be7a77b8a1`.
+Same keystore line (`src/ember-browser.keystore`), signer certificate
+digest `6d1ec368...` identical to v1/v2/release, so it installs as an
+update over any of them. Verification: `zip_inspector.py list` reports
+a REAL ZIP (5 entries; classes.dex 70,900 bytes; inspector SHA-256
+matches sha256sum) and `apksigner verify` passes independently.
+
+**Ember Remote Settings - how it works:**
+
+- On launch, and any time Douglas taps **"Check for Ember's
+  settings"** in Settings, the app fetches one fixed address:
+  `remote-settings.json` on the main branch of this repo, via its raw
+  URL. The fetch runs on a background thread; browsing never waits
+  on it.
+- **Trust: that one hard-coded URL is the only settings source the
+  app ever uses.** No other address is fetched for settings, ever.
+  The same statement is in the Settings screen copy and the About
+  page.
+- The payload is validated against the app's own settings schema -
+  the exact key set of the export/import format (29 prefs keys, each
+  with the right type, no unknown keys, plus `tracker_list` as an
+  array of domain strings). Unknown or missing keys, wrong types, or
+  malformed JSON reject the file whole: nothing changes, and Settings
+  shows a plain rejection notice.
+- On success the settings apply and persist, and Settings shows
+  "Settings applied from Ember - [date/time]" with the short list of
+  what changed (key: old -> new, only for keys that differ). If
+  nothing differs, it says "already up to date." If the fetch fails,
+  it says "Couldn't fetch Ember's settings - nothing changed." It
+  never crashes and never blocks browsing.
+- Bookmarks and history are NOT part of the remote payload - remote
+  settings carry settings only.
+
+**First payload:** `remote-settings.json` at this repo's root carries
+tonight's reset - the values from Douglas's own exported settings
+with only the breakage flipped: cache mode Default (the cache-only
+setting was the page-loading culprit), Desktop Mode off, third-party
+cookies on, DuckDuckGo home and search, JavaScript and images on,
+standard Android user-agent preset with an empty custom string, and
+the untouched 22-domain starter Tracker Shield list. (One repair
+inside it, flagged: the reset file's Tracker list carried a
+mail-wrap line break inside "amplitude.com"; the payload carries the
+domain whole.)
+
+**The honest line:** Douglas installs v3 with one tap (the APK here,
+in chat, and in Drive's "Apps - Install from Drive" folder). After
+that, the reset applies itself from Ember's payload on first launch -
+no import paste. And any future settings change Ember pushes to
+`remote-settings.json` applies the same way, on launch or on his tap
+of the check button.
