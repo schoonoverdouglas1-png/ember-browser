@@ -114,3 +114,11 @@ build-tools 30.0.3), and the hand-rolled line below is built and verified.
 - **License:** Apache License 2.0 (`LICENSE` at repo root) — per
   Douglas's open-source-rules-first stack. It covers this repo,
   including the Nov 13 Kotlin line kept beside the new build.
+
+## Part of the Working Set (Nov 22, 2026)
+
+Douglas's standing order, Nov 22, 2026: the Purple Rat app and all of tonight's pieces are used TOGETHER as one working set — "It's kick ass," in his words.
+
+- **Purple Rat — Doug's App** (the app carries this browser among its doors): https://muse.ai/s/purple-rat-doug-s-app-xqxq6xmuxrxxxfxcxpc/NluUoXnM94DulvgNoCBtDB84t3Z75S1T5eyffpyNnhY
+- **Home/search confirmed:** DuckDuckGo, confirmed by Douglas Nov 22, 2026 after his first field test on his Pixel — "Oh, I like DuckDuckGo a lot. I like it when quacks at me." It stays.
+- Companion pieces in the same set: the Advisor Circle (with the six-seat addendum), the Auto-Algorithm (least cost, most result), the Deferred Board, the Gemini folder watch, and the Old Brain local lane — all in Douglas's workspace record, cross-referenced.
