@@ -122,3 +122,56 @@ Douglas's standing order, Nov 22, 2026: the Purple Rat app and all of tonight's 
 - **Purple Rat — Doug's App** (the app carries this browser among its doors): https://muse.ai/s/purple-rat-doug-s-app-xqxq6xmuxrxxxfxcxpc/NluUoXnM94DulvgNoCBtDB84t3Z75S1T5eyffpyNnhY
 - **Home/search confirmed:** DuckDuckGo, confirmed by Douglas Nov 22, 2026 after his first field test on his Pixel — "Oh, I like DuckDuckGo a lot. I like it when quacks at me." It stays.
 - Companion pieces in the same set: the Advisor Circle (with the six-seat addendum), the Auto-Algorithm (least cost, most result), the Deferred Board, the Gemini folder watch, and the Old Brain local lane — all in Douglas's workspace record, cross-referenced.
+
+## v2 - Extensions, Settings, and Extras (Nov 22, 2026)
+
+Built beside v1, which stays frozen exactly as shipped (`src/` and
+`dist/EmberBrowser-debug.apk` untouched). v2 lives in `src-v2/` and ships as
+`dist/EmberBrowser-v2-debug.apk` - versionCode 2, versionName 2.0, package
+`com.ember.browser`, signed with the same keystore line as v1
+(`src/ember-browser.keystore`), so it installs as an update over v1.
+
+**Honest scope - the extension system:** a hand-rolled WebView shell cannot
+run Chrome Web Store extensions; that takes a Chromium fork. v2's extensions
+are Ember Browser's OWN extension system - feature modules bundled in the
+APK, auto-installed (present from first launch, no downloads, no store),
+each with an on/off toggle on the Extensions screen, persisted across
+launches:
+
+- **Tracker Shield** - blocks known tracker/ad domains in the WebView
+  request pipeline (starter blocklist, 22 domains, labeled "starter
+  blocklist" in the UI). Default on.
+- **Dark Reader** - dark mode for web pages via injected CSS when a page
+  finishes loading. Default off.
+- **Purple Rat Door** - enables the Doors button: one-tap jumps to the
+  Purple Rat app, Doug Schoonover's Facebook, the Purple Rat Project page,
+  and Sevenwinds Casino. Default on.
+- **Quick Lanes** - DuckDuckGo bang-style quick searches from the address
+  bar: `!gh` GitHub, `!drive` Google Drive, `!fb` Facebook, `!sw`
+  Sevenwinds, `!ddg` DuckDuckGo. Default on.
+- **Reader Mode** - the Read button strips the current page to readable
+  text. Default on.
+- **Desktop Mode** - desktop user-agent toggle. Default off.
+
+**Settings screen** (all persisted in SharedPreferences): home page choice
+(DuckDuckGo default - Douglas's confirmed preference; also the Purple Rat
+app, Facebook, or a blank page), search engine choice (DuckDuckGo default;
+Google and Bing options), text size (100/125/150/175%), JavaScript on/off,
+dark theme for the browser chrome, and a clear history/cache button.
+
+**Extras:** bookmarks (add current page with + Mark, list and open from
+Marks), a history list (last 50 pages), find-in-page with a match count,
+share page through the Android share sheet, and open-in-external-browser
+for the current page.
+
+**Kept from v1, unchanged in behavior:** the address bar (full URL as-is,
+bare host gets https://, anything else becomes a search), back / forward /
+reload / home, the progress bar, hardware-Back history, VIEW-intent link
+handling, and the theming - Ember's first (two-tone purple/white), Douglas's
+second, DuckDuckGo home/search by default.
+
+**Verification:** `zip_inspector.py list` reports a REAL ZIP (5 entries:
+AndroidManifest.xml, classes.dex, META-INF signature set), SHA-256
+`17a258b72fa03fe9ac71df8b4f614691eb0981c218b7ade572517f7db111bfc5`,
+24,943 bytes; `apksigner verify` passes independently, with the same signer
+certificate digest as v1 (`6d1ec368...`), confirming the update path.

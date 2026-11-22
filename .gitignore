@@ -14,3 +14,10 @@ dist/*.idsig
 
 # Symlink into the wider workspace, not part of this project
 HIVE-BRAIN
+
+src-v2/classes/
+src-v2/dex/
+src-v2/classes.jar
+src-v2/unsigned.apk
+src-v2/work.apk
+src-v2/aligned.apk
