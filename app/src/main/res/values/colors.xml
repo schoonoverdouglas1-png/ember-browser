@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Ember's two tones: one shade of purple, one shade of white. -->
+    <color name="ember_purple">#6A1B9A</color>
+    <color name="ember_purple_dark">#4A148C</color>
+    <color name="ember_purple_light">#9C4DCC</color>
+    <color name="ember_white">#FFFFFF</color>
+    <color name="ember_ink">#1A1A1A</color>
+</resources>

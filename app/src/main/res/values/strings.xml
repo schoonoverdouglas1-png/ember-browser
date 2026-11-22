@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ember Browser</string>
+    <string name="address_hint">Search Mwmbl, or type an address</string>
+    <string name="go">Go</string>
+    <string name="back">◀</string>
+    <string name="forward">▶</string>
+    <string name="reload">↻</string>
+    <string name="home">Home</string>
+    <string name="tab_one">Tab 1</string>
+    <string name="tab_two">Tab 2</string>
+    <string name="menu_desktop">Desktop view</string>
+    <string name="menu_search_google">Search with Google (instead of Mwmbl)</string>
+    <string name="menu_add_bookmark">Add bookmark</string>
+    <string name="menu_bookmarks">Bookmarks</string>
+    <string name="menu_home">Start page</string>
+    <string name="menu_about">About Ember Browser</string>
+</resources>

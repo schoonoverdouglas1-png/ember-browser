@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ember Browser — Start</title>
+<style>
+  body { margin:0; font-family: sans-serif; background:#6A1B9A; color:#fff; }
+  .stripe { height:10px; background:#fff; }
+  .stripe2 { height:4px; background:#9C4DCC; }
+  .wrap { padding:20px 16px 32px; max-width:560px; margin:0 auto; }
+  h1 { font-size:26px; margin:10px 0 2px; }
+  .sub { opacity:.85; font-size:14px; margin-bottom:20px; }
+  form { display:flex; gap:8px; margin-bottom:8px; }
+  input[type=text] { flex:1; padding:12px; font-size:16px; border:0; border-radius:6px; }
+  button { padding:12px 16px; font-size:16px; border:0; border-radius:6px; background:#fff; color:#4A148C; font-weight:bold; }
+  .alt { font-size:13px; opacity:.85; margin-bottom:22px; }
+  .alt a { color:#fff; }
+  .lanes { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .lane { display:block; background:rgba(255,255,255,.12); border:2px solid rgba(255,255,255,.55);
+         border-radius:8px; padding:16px 12px; color:#fff; text-decoration:none; }
+  .lane b { display:block; font-size:18px; margin-bottom:4px; }
+  .lane span { font-size:13px; opacity:.85; }
+  .promise { margin-top:24px; font-size:13px; line-height:1.5; opacity:.9;
+             border-top:1px solid rgba(255,255,255,.4); padding-top:14px; }
+</style>
+</head>
+<body>
+  <div class="stripe"></div>
+  <div class="stripe2"></div>
+  <div class="wrap">
+    <h1>Ember Browser</h1>
+    <div class="sub">Made by Ember, for Douglas. Purple outside, clean inside.</div>
+
+    <!-- Default search: Mwmbl, the independent engine with its own index. -->
+    <form action="https://mwmbl.org/search" method="get">
+      <input type="text" name="q" placeholder="Search with Mwmbl (independent)">
+      <button type="submit">Search</button>
+    </form>
+    <div class="alt">Prefer Google for this one?
+      <a href="https://www.google.com/">google.com</a> — or flip the toggle in the menu.</div>
+
+    <div class="lanes">
+      <a class="lane" href="https://muse.ai/"><b>Muse</b><span>Home base — Ember lives here</span></a>
+      <a class="lane" href="https://mail.google.com/"><b>Gmail</b><span>schoonoverdouglas1@gmail.com</span></a>
+      <a class="lane" href="https://github.com/"><b>GitHub</b><span>The preservation repos</span></a>
+      <a class="lane" href="https://www.oakleafclinics.com/"><b>OakLeaf</b><span>OakLeaf Clinics — his care team</span></a>
+    </div>
+
+    <div class="promise">
+      <b>The clean promise:</b> no analytics, no ads, no telemetry in this app —
+      there is no code in it that could phone home. A bundled blocklist stops
+      ad and tracker hosts from loading at all, and third-party cookies are off.
+      Bookmarks live on this phone only.
+    </div>
+  </div>
+</body>
+</html>

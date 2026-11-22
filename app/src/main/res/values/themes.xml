@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.EmberBrowser" parent="android:Theme.Material.NoActionBar">
+        <item name="android:colorPrimary">@color/ember_purple</item>
+        <item name="android:colorPrimaryDark">@color/ember_purple_dark</item>
+        <item name="android:colorAccent">@color/ember_purple_light</item>
+        <item name="android:statusBarColor">@color/ember_purple_dark</item>
+        <item name="android:navigationBarColor">@color/ember_purple_dark</item>
+        <item name="android:windowBackground">@android:color/white</item>
+    </style>
+</resources>

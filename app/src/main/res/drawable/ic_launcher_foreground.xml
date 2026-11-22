@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The two-tone rat, abstracted: a white stripe sweeping across the purple,
+     and one round white eye. Same rat from every side. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:pathData="M0,78 L108,30 L108,48 L0,96 Z"
+        android:fillColor="#FFFFFF" />
+    <path
+        android:pathData="M71,26 a7,7 0 1,0 0.1,0 Z"
+        android:fillColor="#FFFFFF" />
+</vector>

@@ -1,0 +1,56 @@
+# Ember Browser starter blocklist — one host per line, # = comment.
+# Matching is host-or-any-subdomain. Main-frame pages are never blocked;
+# only sub-resources (ads, trackers, fingerprinters) from these hosts are.
+# Seeded 2026-11-13 from tracker hosts actually observed in Douglas's own
+# browser profile that day, plus the long-standing ad networks. Plain text:
+# read it, extend it, or empty it — it is yours, and it never phones home.
+doubleclick.net
+googlesyndication.com
+google-analytics.com
+googletagmanager.com
+googletagservices.com
+adnxs.com
+adsrvr.org
+criteo.com
+criteo.net
+taboola.com
+outbrain.com
+scorecardresearch.com
+casalemedia.com
+bidswitch.net
+bidence.net
+bidr.io
+3lift.com
+360yield.com
+ad-stir.com
+agkn.com
+amazon-adsystem.com
+creativecdn.com
+crwdcntrl.net
+demdex.net
+doubleverify.com
+id5-sync.com
+liadm.com
+lijit.com
+mathtag.com
+media6degrees.com
+microad.jp
+moatads.com
+openx.net
+pubmatic.com
+rlcdn.com
+rubiconproject.com
+semasio.net
+smartadserver.com
+socdm.com
+tapad.com
+teads.tv
+tremorhub.com
+udmserve.net
+usbrowserspeed.com
+yieldmo.com
+decibelinsight.net
+clarity.ms
+hotjar.com
+fullstory.com
+mouseflow.com
